@@ -127,7 +127,10 @@ class PRA(object):
                     #如果当前关系在第一个 并且边长度为1,说明找到了这样的实体对
                     if path[0].label==relation and len(path)==1:
                         positiveSamples.append([node,end_node])
-                        featureSet.append(path)
+                        outputs = self.bfs_node_seqs(node, max_depth=20)
+                        nodePaths = outputs.get(end_node)
+                        sample_paths = self.get_edge_seqs(nodePaths)
+                        featureSet += sample_paths
         return positiveSamples,featureSet
 
     ''''
