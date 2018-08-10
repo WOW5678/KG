@@ -3,7 +3,7 @@
  @Time    : 2018/8/7 0007 下午 2:28
  @Author  : Shanshan Wang
  @Version : Python3.5
- 使用transE方法训练医疗数据，得到每个医疗概念的向量表示
+ 使用transH方法训练医疗数据，得到每个医疗概念的向量表示
 """
 import random
 import numpy as np
@@ -197,13 +197,13 @@ def func_name2id(list_):
     return name2id
 
 if __name__ == '__main__':
-    entity2id, relation2id,tuples=processData('../data/relationship.csv')
+    entity2id, relation2id,tuples=processData('data/relationship.csv')
     print(len(tuples))
     transH=TransH(entity2id,relation2id,tuples,batch_size=len(tuples),epochs=2000)
     r_prob = transH.calc_replace_prob()
     Tbatch=transH.trainDataGenerate(r_prob)
     embedding_table, pos_embeddings, tuples=transH.model_train(Tbatch,r_prob)
-    transH.writeVector('../data/vector.txt',pos_embeddings, tuples)
+    transH.writeVector('data/vector.txt',pos_embeddings, tuples)
 
 
 
