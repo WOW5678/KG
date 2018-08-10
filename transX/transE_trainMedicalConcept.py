@@ -162,12 +162,12 @@ def func_name2id(list_):
     return name2id
 
 if __name__ == '__main__':
-    entity2id, relation2id,tuples=processData('../data/relationship.csv')
+    entity2id, relation2id,tuples=processData('data/relationship.csv')
     print(len(tuples))
     transE=TransE(entity2id,relation2id,tuples,batch_size=len(tuples),epochs=2000)
     Tbatch=transE.trainDataGenerate()
     embedding_table, pos_embeddings, tuples=transE.model_train(Tbatch)
-    transE.writeVector('../data/vector.txt',pos_embeddings, tuples)
+    transE.writeVector('data/vector.txt',pos_embeddings, tuples)
 
 
 
