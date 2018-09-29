@@ -3,7 +3,7 @@ from xml.dom.minidom import parse
 import xml.dom.minidom
 
 def KBPparser():
-	infile = open('dataset/tac_kbp_2014(1).txt','w',encoding='utf-8')
+	infile = open('tac_kbp_2014(1).txt','w',encoding='utf-8')
 	#cur.execute("create table KBP2014(id int auto_increment primary key, docid varchar(50),mention varchar(100),candidate varchar(100))")
 	DOMTree = xml.dom.minidom.parse("dataset/tac_2014_kbp_english_entity_linking_training_AMR_queries.xml")
 	Tree = DOMTree.documentElement
